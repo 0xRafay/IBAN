@@ -45,7 +45,7 @@ int main() {
                 accumulatedNumbers * 100 + (c - 'A' + 10);
             pos++;
         } else {
-            std::cout << "Error occured while parsing";
+            std::cout << "Error occurred while parsing\n";
             return 1;
         }
     }
