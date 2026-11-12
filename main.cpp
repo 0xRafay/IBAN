@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cctype>
 #include <iostream>
 #include <string>
 int main() {
@@ -11,6 +12,9 @@ int main() {
     size_t inputLength = input.length();
 
     input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
+
+    std::transform(input.begin(), input.end(), input.begin(),
+                   [](unsigned char c) { return std::toupper(c); });
 
     if (inputLength > 4) {
         std::rotate(input.begin(), input.begin() + 4, input.end());
