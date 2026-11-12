@@ -46,7 +46,7 @@ int main() {
             pos++;
         } else {
             std::cout << "Error occured while parsing";
-            return 0;
+            return 1;
         }
     }
     if (accumulatedNumbers % 97 == 1) {
