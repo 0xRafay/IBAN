@@ -1,4 +1,4 @@
-#include <cstddef>
+#include <algorithm>
 #include <iostream>
 #include <string>
 int main() {
@@ -6,35 +6,13 @@ int main() {
     std::string input;
 
     std::cout << "Enter IBAN: ";
-    std::cin >> input;
+    std::getline(std::cin, input);
 
-    int sizeOfInput = input.length();
+    input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
 
-    std::cout << sizeOfInput;
+    std::rotate(input.begin(), input.begin() + 4, input.end());
 
-    size_t pos = 0;
-
-    while (pos < sizeOfInput) {
-
-        char c = input[pos];
-
-        if (c == ' ' || c == '\n' || c == '\t' || c == '-') {
-            pos++;
-            // idea: can detect where the dash is supposd to be
-            // idea: skips on '-' when its in a valid position
-            // not implemented rn, btw
-        }
-
-        if (c >= '0' && c <= '9') {
-            long value = 0;
-            value = value * 10 + (input[pos] - '0');
-
-            pos++;
-        }
-        // just moves on and doesnt care about 
-        // other cases or errors
-        pos++;
-    }
+    std::cout << input;
 
     return 0;
 }
