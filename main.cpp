@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <boost/multiprecision/cpp_int.hpp>
+#include <boost/multiprecision/fwd.hpp>
 #include <cctype>
 #include <iostream>
 #include <string>
@@ -29,26 +30,26 @@ int main() {
 
     size_t pos = 0;
 
-    cpp_int characterConvertedToNumber = 0;
+    cpp_int accumulatedNumbers = 0;
 
     while (pos < inputLength) {
 
         char c = input[pos];
 
         if (c >= '0' && c <= '9') {
-            characterConvertedToNumber =
-                characterConvertedToNumber * 10 + (c - '0');
+            accumulatedNumbers =
+                accumulatedNumbers * 10 + (c - '0');
             pos++;
         } else if (c >= 'A' && c <= 'Z') {
-            characterConvertedToNumber =
-                characterConvertedToNumber * 100 + (c - 'A' + 10);
+            accumulatedNumbers =
+                accumulatedNumbers * 100 + (c - 'A' + 10);
             pos++;
         } else {
             std::cout << "Error occured while parsing";
             return 0;
         }
     }
-    if (characterConvertedToNumber % 97 == 1) {
+    if (accumulatedNumbers % 97 == 1) {
         std::cout << input << " is Valid.";
     } else {
         std::cout << input << " is Invalid.";
